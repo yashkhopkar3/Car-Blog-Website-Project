@@ -54,6 +54,7 @@
                 <div class="card shadow-sm">
                     <div class="card-body"> 
                         <a href="{% if user.is_authenticated %}{% url 'viewDetails' car.id %}{% else %}{% url 'login' %}{% endif %}">
+                            <img src="{{car.car_photo.url}}" alt="{{ car.car_Name }}" class="car-image img-fluid">
                             <h5 class="card-title">{{ car.car_Name }}</h5>
                         </a>
                     </div>

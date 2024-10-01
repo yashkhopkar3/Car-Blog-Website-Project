@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Cars.views import home,viewDetails,add_car,login_view,signup,user_logout
+from Cars.views import home,viewDetails,add_car,login_view,signup,user_logout,interestForm
 from . import settings
 from django.conf.urls.static import static
 
@@ -27,7 +27,8 @@ urlpatterns = [
     path('add/', add_car, name='add_car'),
     path('login/',login_view,name="login"),
     path('signup/',signup,name="signup"),
-    path('logout/',user_logout,name="logout")
+    path('logout/',user_logout,name="logout"),
+    path('interestForm/',interestForm,name='interestForm')
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root =settings.MEDIA_ROOT) 

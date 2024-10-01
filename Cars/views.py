@@ -4,7 +4,7 @@ from .forms import CarForm
 from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm
+from .forms import SignUpForm,InterestForm
 # Create your views here.
 
 def home(request):
@@ -28,6 +28,18 @@ def add_car(request):
     
     return render(request, 'add_car.html', {'form': form})
 
+@login_required
+def interestForm(request):
+    if request.method == 'POST':
+        form = InterestForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirect to the homepage after saving
+    else:
+        form = InterestForm()
+    
+    return render(request, 'InterestedForm.html', {'form': form})
+    
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
